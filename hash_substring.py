@@ -7,13 +7,13 @@ def read_input():
     command = input()
 
     # input from keyboard
-    if command[0] == 'I':
+    if command.startswith('I'):
 
         searchFor = input()
         pattern = input()
 
     # input from file
-    elif command[0] == 'F':
+    elif command.startswith('F'):
         
         file = open('./tests/' + '06', 'r')
 
@@ -21,7 +21,10 @@ def read_input():
         pattern = file.readline()
     
     # return both lines in one return
-    return(pattern, searchFor)
+    if 1 <= len(searchFor) <= len(pattern) <= (5 * 10**5):
+        return(pattern, searchFor)
+    else:
+        exit()
 
 def print_occurrences(output):
     # this function should control output, it doesn't need any return
