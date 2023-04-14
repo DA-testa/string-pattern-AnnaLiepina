@@ -9,19 +9,19 @@ def read_input():
     # input from keyboard
     if command[0] == 'I':
 
-        pattern = input()
         searchFor = input()
+        pattern = input()
 
     # input from file
     elif command[0] == 'F':
         
         file = open('./tests/' + '06', 'r')
 
-        pattern = file.readline()
         searchFor = file.readline()
+        pattern = file.readline()
     
     # return both lines in one return
-    if(len(searchFor) > len(pattern)):
+    if len(searchFor) > len(pattern):
         exit()
     return(pattern, searchFor)
 
