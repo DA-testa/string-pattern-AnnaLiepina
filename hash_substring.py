@@ -7,22 +7,22 @@ def read_input():
     command = input()
 
     # input from keyboard
-    if command.startswith('I'):
+    if command[0] == 'I':
 
-        searchFor = input()
-        pattern = input()
+        searchFor = input().rstrip()
+        text = input().rstrip()
 
     # input from file
-    elif command.startswith('F'):
+    elif command[0] == 'F':
         
         file = open('./tests/' + '06', 'r')
 
-        searchFor = file.readline()
-        pattern = file.readline()
+        searchFor = file.readline().rstrip()
+        text = file.readline().rstrip()
     
     # return both lines in one return
-    if 1 <= len(searchFor) <= len(pattern) <= (5 * 10**5):
-        return(pattern, searchFor)
+    if 1 <= len(searchFor) <= len(text) <= (5 * 10**5):
+        return(text, searchFor)
     else:
         exit()
 
