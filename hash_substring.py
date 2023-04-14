@@ -4,16 +4,26 @@ def read_input():
     # this function needs to aquire input both from keyboard and file
     # as before, use capital i (input from keyboard) and capital f (input from file) to choose which input type will follow
     
-    
-    # after input type choice
-    # read two lines 
-    # first line is pattern 
-    # second line is text in which to look for pattern 
+    command = input()
+
+    # input from keyboard
+    if command[0] == 'I':
+
+        pattern = input()
+        searchFor = input()
+
+    # input from file
+    elif command[0] == 'F':
+        
+        file = open('./tests/' + '06', 'r')
+
+        pattern = file.readline()
+        searchFor = file.readline()
     
     # return both lines in one return
-    
-    # this is the sample return, notice the rstrip function
-    return (input().rstrip(), input().rstrip())
+    if(len(searchFor) > len(pattern)):
+        exit()
+    return(pattern, searchFor)
 
 def print_occurrences(output):
     # this function should control output, it doesn't need any return
@@ -21,9 +31,21 @@ def print_occurrences(output):
 
 def get_occurrences(pattern, text):
     # this function should find the occurances using Rabin Karp alghoritm 
+    copy = pattern
+    position = 0
+    cutoff = 0
+    occurances = []
 
+    while cutoff < len(pattern):
+        position = copy.find(text)
+        if (position < 0):
+            break
+        occurances.append(position+cutoff)
+
+        copy = copy[position+1:len(copy)]
+        cutoff = cutoff + position+1
     # and return an iterable variable
-    return [0]
+    return occurances
 
 
 # this part launches the functions
