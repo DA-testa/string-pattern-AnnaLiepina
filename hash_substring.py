@@ -21,8 +21,6 @@ def read_input():
         pattern = file.readline()
     
     # return both lines in one return
-    if len(searchFor) > len(pattern):
-        exit()
     return(pattern, searchFor)
 
 def print_occurrences(output):
